@@ -1,3 +1,7 @@
+env_file:
+  - ./env.txt
+
+
 services:
   n8n:
     image: n8nio/n8n
@@ -48,6 +52,8 @@ services:
          condition: service_healthy 
         redis:
          condition: service_healthy 
+    env_file:
+      - ./env.txt
 
   postgres:
     image: postgres:13
@@ -85,6 +91,9 @@ services:
       - n8n_network
     depends_on:
       - postgres
+
+    env_file:
+      - ./env.txt
 
   n8n_worker1:
     image: n8nio/n8n

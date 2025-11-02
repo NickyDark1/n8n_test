@@ -1,7 +1,7 @@
 services:
   n8n:
     image: n8nio/n8n
-    container_name: n8n
+    
     restart: always
     environment:
     # servicio n8n
@@ -45,12 +45,15 @@ services:
         postgres:
          condition: service_healthy 
         redis:
-         condition: service_healthy 
+         condition: service_healthy
+
+    ports:
+      - "5678:5678"
 
          
   postgres:
     image: postgres:13
-    container_name: n8n_postgres
+    
     restart: always
     environment:
       - POSTGRES_USER=${POSTGRES_USER}
@@ -70,7 +73,7 @@ services:
 
   pgadmin:
     image: dpage/pgadmin4
-    container_name: n8n_pgadmin
+    
     restart: always
     environment:
       - PGADMIN_DEFAULT_EMAIL=${PGADMIN_DEFAULT_EMAIL}

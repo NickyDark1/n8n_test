@@ -48,9 +48,8 @@ services:
          condition: service_healthy 
         redis:
          condition: service_healthy 
-    env_file:
-      - ./env.txt
 
+         
   postgres:
     image: postgres:13
     container_name: n8n_postgres
@@ -88,8 +87,6 @@ services:
     depends_on:
       - postgres
 
-    env_file:
-      - ./env.txt
 
   n8n_worker1:
     image: n8nio/n8n
